@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 import pickle
 import os
+print(f"Current Working Directory: {os.getcwd()}")
+print(f"Directory Contents: {os.listdir()}")
+model_path = "RandomForestClassifier_model2.sav"
 
 def load_model():
     model_path = "C:/Users/osamh/TuProject/Final Project/mushbari-main/mushbari-main/RandomForestClassifier_model2.sav"
