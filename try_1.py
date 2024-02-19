@@ -27,6 +27,7 @@ def main():
     st.title("Water quality prediction Web App")
     st.info('Easy Application For Water quality prediction Diseases')
     
+    # Moved the model loading here
     model = load_model()
 
     st.sidebar.write("")
