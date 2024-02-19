@@ -6,7 +6,7 @@ import os
 print(f"Current Working Directory: {os.getcwd()}")
 print(f"Directory Contents: {os.listdir()}")
 
-# If the model file is in the same directory as the Streamlit app
+# Update the model path to the correct absolute path
 model_path = "mushbari-main/mushbari-main/RandomForestClassifier_model2.sav"
 
 def load_model():
@@ -54,7 +54,7 @@ def main():
     }
     df = pd.DataFrame(data)
 
-    # إنشاء زر لتنفيذ التنبؤ
+    # Create a button to execute the prediction
     if st.button('Predict Potability'):
         if model is not None:
             prediction = model.predict(df)
