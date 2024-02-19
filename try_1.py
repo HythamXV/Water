@@ -3,15 +3,16 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 import pickle
+import os
 
 #df=pd.read_csv("water.csv")
 
 st.title ("Water quality prediction Web App")
 st.info('Easy Application For Water quality prediction Desseas')
 #model=pickle.load(open(r"C:\Users\osamh\TuProject\Final Project\mushbari-main\mushbari-main\RandomForestClassifier_model2.sav" ,'rb'))
-model_path = "C:/Users/osamh/TuProject/Final Project/mushbari-main/mushbari-main/RandomForestClassifier_model2.sav"
+
+model_path = os.path.abspath("C:/Users/osamh/TuProject/Final Project/mushbari-main/mushbari-main/RandomForestClassifier_model2.sav")
 model = pickle.load(open(model_path, 'rb'))
-import os
 
 model_path = os.path.join("C:", "Users", "osamh", "TuProject", "Final Project", "mushbari-main", "mushbari-main", "RandomForestClassifier_model2.sav")
 model = pickle.load(open(model_path, 'rb'))
