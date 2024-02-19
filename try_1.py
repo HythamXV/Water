@@ -1,43 +1,7 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
-import plotly.express as px
 import pickle
 import os
-
-#df=pd.read_csv("water.csv")
-
-st.title ("Water quality prediction Web App")
-st.info('Easy Application For Water quality prediction Desseas')
-#model=pickle.load(open(r"C:\Users\osamh\TuProject\Final Project\mushbari-main\mushbari-main\RandomForestClassifier_model2.sav" ,'rb'))
-model_path = os.path.abspath("C:/Users/osamh/TuProject/Final Project/mushbari-main/mushbari-main/RandomForestClassifier_model2.sav")
-
-if os.path.exists(model_path):
-    print(f"Model file exists at: {model_path}")
-    model = pickle.load(open(model_path, 'rb'))
-else:
-    print(f"Model file does not exist at: {model_path}")
-
-
-def load_model():
-    model_path = "C:/Users/osamh/TuProject/Final Project/mushbari-main/mushbari-main/RandomForestClassifier_model2.sav"
-    return pickle.load(open(model_path, 'rb'))
-
-def main():
-    model = load_model()
-
-    # Streamlit app logic
-    st.title("Streamlit App")
-    df = pd.DataFrame(...)  # Assuming you have some DataFrame here
-    
-    # Make predictions using the loaded model
-    prediction = model.predict(df)
-
-    # Display results in the Streamlit app
-    st.write("Predictions:", prediction)
-
-if __name__ == "__main__":
-    main()
 
 def load_model():
     model_path = "C:/Users/osamh/TuProject/Final Project/mushbari-main/mushbari-main/RandomForestClassifier_model2.sav"
@@ -45,61 +9,50 @@ def load_model():
         return pickle.load(open(model_path, 'rb'))
     else:
         print(f"Model file not found at: {model_path}")
-        return None  # Or raise an exception, depending on your error handling strategy
+        return None
 
+def main():
+    st.title("Water quality prediction Web App")
+    st.info('Easy Application For Water quality prediction Diseases')
+    
+    model = load_model()
 
-model_path = "C:/Users/osamh/TuProject/Final Project/mushbari-main/mushbari-main/RandomForestClassifier_model2.sav"
-print(f"Attempting to load model from: {model_path}")
-model = pickle.load(open(model_path, 'rb'))
-print("Model loaded successfully!")
+    st.sidebar.write("")
+    st.sidebar.header("Feature Selection")
 
-# ... rest of your Streamlit app code
+    ph = st.text_input("ph")
+    Hardness = st.text_input("Hardness")
+    Solids = st.text_input("Solids")
+    Chloramines = st.text_input("Chloramines")
+    Sulfate = st.text_input("Sulfate")
+    Conductivity = st.text_input("Conductivity")
+    Organic_carbon = st.text_input("Organic_carbon")
+    Trihalomethanes = st.text_input("Trihalomethanes")
+    Turbidity = st.text_input("Turbidity")
 
-# At the point where you use the model
-print("Attempting to make predictions...")
-prediction = model.predict(df)
-print("Predictions made successfully!")
+    data = {
+        'ph': [ph],
+        'Hardness': [Hardness],
+        'Solids': [Solids],
+        'Chloramines': [Chloramines],
+        'Sulfate': [Sulfate],
+        'Conductivity': [Conductivity],
+        'Organic_carbon': [Organic_carbon],
+        'Trihalomethanes': [Trihalomethanes],
+        'Turbidity': [Turbidity]
+    }
+    df = pd.DataFrame(data)
 
-st.sidebar.write ("")
-#st.sidebar.markdown ("hhhh")import pickle
+    # إنشاء زر لتنفيذ التنبؤ
+    if st.button('Predict Potability'):
+        if model is not None:
+            prediction = model.predict(df)
+            if prediction[0] == 0:
+                st.write('The water is not potable.')
+            else:
+                st.write('The water is potable.')
+        else:
+            st.write('Error: Model not loaded.')
 
-st.sidebar.header("Feature Selection")
-
-
-ph=st.text_input("ph")
-Hardness=st.text_input("Hardness")
-Solids=st.text_input("Solids")
-Chloramines=st.text_input("Chloramines")
-Sulfate=st.text_input("Sulfate")
-Conductivity=st.text_input("Conductivity")
-Organic_carbon=st.text_input("Organic_carbon")
-Trihalomethanes=st.text_input("Trihalomethanes")
-Turbidity=st.text_input("Turbidity")
-Potability=st.text_input("Potability")
-
-
-data = {
-    'ph': [ph],
-    'Hardness': [Hardness],
-    'Solids': [Solids],
-    'Chloramines': [Chloramines],
-    'Sulfate': [Sulfate],
-    'Conductivity': [Conductivity],
-    'Organic_carbon': [Organic_carbon],
-    'Trihalomethanes': [Trihalomethanes],
-    'Turbidity': [Turbidity]
-}
-df = pd.DataFrame(data)
-
-# إنشاء زر لتنفيذ التنبؤ
-if st.button('Predict Potability'):
-    prediction = model.predict(df)
-    if prediction[0] == 0:
-        st.write('The water is not potable.')
-    else:
-        st.write('The water is potable.')
-
-
-
-
-
+if __name__ == "__main__":
+    main()
