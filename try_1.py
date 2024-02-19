@@ -7,7 +7,7 @@ print(f"Current Working Directory: {os.getcwd()}")
 print(f"Directory Contents: {os.listdir()}")
 
 # Update the model path to the correct absolute path
-model_path = "RandomForestClassifier_model2.sav"
+model=pickle.load(open(r"\mushbari-main\mushbari-main\RandomForestClassifier_model2.sav" ,'rb'))
 
 def load_model():
     try:
