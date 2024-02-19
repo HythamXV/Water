@@ -14,6 +14,7 @@ def load_model():
         if os.path.exists(model_path):
             with open(model_path, 'rb') as file:
                 model = pickle.load(file)
+            print("Model loaded successfully!")
             return model
         else:
             print(f"Model file not found at: {model_path}")
@@ -21,6 +22,7 @@ def load_model():
     except Exception as e:
         print(f"Error loading the model: {e}")
         return None
+
 
 def main():
     st.title("Water quality prediction Web App")
