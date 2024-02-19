@@ -8,7 +8,13 @@ import pickle
 
 st.title ("Water quality prediction Web App")
 st.info('Easy Application For Water quality prediction Desseas')
-model=pickle.load(open(r"C:\Users\osamh\TuProject\Final Project\mushbari-main\mushbari-main\RandomForestClassifier_model2.sav" ,'rb'))
+#model=pickle.load(open(r"C:\Users\osamh\TuProject\Final Project\mushbari-main\mushbari-main\RandomForestClassifier_model2.sav" ,'rb'))
+model_path = "C:/Users/osamh/TuProject/Final Project/mushbari-main/mushbari-main/RandomForestClassifier_model2.sav"
+model = pickle.load(open(model_path, 'rb'))
+import os
+
+model_path = os.path.join("C:", "Users", "osamh", "TuProject", "Final Project", "mushbari-main", "mushbari-main", "RandomForestClassifier_model2.sav")
+model = pickle.load(open(model_path, 'rb'))
 
 st.sidebar.write ("")
 #st.sidebar.markdown ("hhhh")import pickle
