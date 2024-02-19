@@ -10,12 +10,14 @@ import os
 st.title ("Water quality prediction Web App")
 st.info('Easy Application For Water quality prediction Desseas')
 #model=pickle.load(open(r"C:\Users\osamh\TuProject\Final Project\mushbari-main\mushbari-main\RandomForestClassifier_model2.sav" ,'rb'))
-
 model_path = os.path.abspath("C:/Users/osamh/TuProject/Final Project/mushbari-main/mushbari-main/RandomForestClassifier_model2.sav")
-model = pickle.load(open(model_path, 'rb'))
 
-model_path = os.path.join("C:", "Users", "osamh", "TuProject", "Final Project", "mushbari-main", "mushbari-main", "RandomForestClassifier_model2.sav")
-model = pickle.load(open(model_path, 'rb'))
+if os.path.exists(model_path):
+    print(f"Model file exists at: {model_path}")
+    model = pickle.load(open(model_path, 'rb'))
+else:
+    print(f"Model file does not exist at: {model_path}")
+
 
 st.sidebar.write ("")
 #st.sidebar.markdown ("hhhh")import pickle
