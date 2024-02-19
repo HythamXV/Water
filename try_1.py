@@ -49,7 +49,7 @@ def main():
     df = pd.DataFrame(data)
 
     # إنشاء زر لتنفيذ التنبؤ
-       if st.button('Predict Potability'):
+    if st.button('Predict Potability'):
         if model is not None:
             prediction = model.predict(df)
             if prediction[0] == 0:
