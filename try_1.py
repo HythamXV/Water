@@ -10,10 +10,16 @@ print(f"Directory Contents: {os.listdir()}")
 model_path = "mushbari-main/mushbari-main/RandomForestClassifier_model2.sav"
 
 def load_model():
-    if os.path.exists(model_path):
-        return pickle.load(open(model_path, 'rb'))
-    else:
-        print(f"Model file not found at: {model_path}")
+    try:
+        if os.path.exists(model_path):
+            with open(model_path, 'rb') as file:
+                model = pickle.load(file)
+            return model
+        else:
+            print(f"Model file not found at: {model_path}")
+            return None
+    except Exception as e:
+        print(f"Error loading the model: {e}")
         return None
 
 def main():
