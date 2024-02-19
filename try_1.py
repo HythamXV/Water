@@ -39,6 +39,15 @@ def main():
 if __name__ == "__main__":
     main()
 
+def load_model():
+    model_path = "C:/Users/osamh/TuProject/Final Project/mushbari-main/mushbari-main/RandomForestClassifier_model2.sav"
+    if os.path.exists(model_path):
+        return pickle.load(open(model_path, 'rb'))
+    else:
+        print(f"Model file not found at: {model_path}")
+        return None  # Or raise an exception, depending on your error handling strategy
+
+
 model_path = "C:/Users/osamh/TuProject/Final Project/mushbari-main/mushbari-main/RandomForestClassifier_model2.sav"
 print(f"Attempting to load model from: {model_path}")
 model = pickle.load(open(model_path, 'rb'))
