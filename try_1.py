@@ -19,6 +19,38 @@ else:
     print(f"Model file does not exist at: {model_path}")
 
 
+def load_model():
+    model_path = "C:/Users/osamh/TuProject/Final Project/mushbari-main/mushbari-main/RandomForestClassifier_model2.sav"
+    return pickle.load(open(model_path, 'rb'))
+
+def main():
+    model = load_model()
+
+    # Streamlit app logic
+    st.title("Streamlit App")
+    df = pd.DataFrame(...)  # Assuming you have some DataFrame here
+    
+    # Make predictions using the loaded model
+    prediction = model.predict(df)
+
+    # Display results in the Streamlit app
+    st.write("Predictions:", prediction)
+
+if __name__ == "__main__":
+    main()
+
+model_path = "C:/Users/osamh/TuProject/Final Project/mushbari-main/mushbari-main/RandomForestClassifier_model2.sav"
+print(f"Attempting to load model from: {model_path}")
+model = pickle.load(open(model_path, 'rb'))
+print("Model loaded successfully!")
+
+# ... rest of your Streamlit app code
+
+# At the point where you use the model
+print("Attempting to make predictions...")
+prediction = model.predict(df)
+print("Predictions made successfully!")
+
 st.sidebar.write ("")
 #st.sidebar.markdown ("hhhh")import pickle
 
