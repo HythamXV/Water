@@ -8,28 +8,24 @@ print(f"Directory Contents: {os.listdir()}")
 
 # Update the model path to the correct absolute path
 model_path = "RandomForestClassifier_model2.sav"
-load_model = pickle.load(open(model_path, "rb"))
-def load_model():
-    try:
-        if os.path.exists(model_path):
-            with open(model_path, 'rb') as file:
-                model = pickle.load(file)
-            print("Model loaded successfully!")
-            return model
-        else:
-            print(f"Model file not found at: {model_path}")
-            return None
-    except Exception as e:
-        print(f"Error loading the model: {e}")
-        return None
+
+# Load the model
+try:
+    if os.path.exists(model_path):
+        with open(model_path, 'rb') as file:
+            model = pickle.load(file)
+        print("Model loaded successfully!")
+    else:
+        print(f"Model file not found at: {model_path}")
+        model = None
+except Exception as e:
+    print(f"Error loading the model: {e}")
+    model = None
 
 def main():
     st.title("Water quality prediction Web App")
     st.info('Easy Application For Water quality prediction Diseases')
     
-    # Moved the model loading here
-    model = load_model()
-
     st.sidebar.write("")
     st.sidebar.header("Feature Selection")
 
@@ -54,18 +50,4 @@ def main():
         'Trihalomethanes': [Trihalomethanes],
         'Turbidity': [Turbidity]
     }
-    df = pd.DataFrame(data)
-
-    # Create a button to execute the prediction
-    if st.button('Predict Potability'):
-        if model is not None:
-            prediction = model.predict(df)
-            if prediction[0] == 0:
-                st.write('The water is not potable.')
-            else:
-                st.write('The water is potable.')
-        else:
-            st.write('Error: Model not loaded.')
-
-if __name__ == "__main__":
-    main()
+    df = pd.D
