@@ -8,7 +8,7 @@ print(f"Directory Contents: {os.listdir()}")
 
 # Update the model path to the correct absolute path
 model_path = "RandomForestClassifier_model2.sav"
-
+load_model = pickle.load(open(model_path, "rb"))
 def load_model():
     try:
         if os.path.exists(model_path):
