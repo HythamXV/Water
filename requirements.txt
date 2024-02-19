@@ -1,2 +1,1 @@
-streamlit==0.89.0
-plotly==5.5.1  # or the version you are using
+plotly==5.4.0  # Use a version that is available and works for your app
