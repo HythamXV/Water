@@ -2,12 +2,14 @@ import streamlit as st
 import pandas as pd
 import pickle
 import os
+
 print(f"Current Working Directory: {os.getcwd()}")
 print(f"Directory Contents: {os.listdir()}")
+
+# If the model file is in the same directory as the Streamlit app
 model_path = "RandomForestClassifier_model2.sav"
 
 def load_model():
-    model_path = "C:/Users/osamh/TuProject/Final Project/mushbari-main/mushbari-main/RandomForestClassifier_model2.sav"
     if os.path.exists(model_path):
         return pickle.load(open(model_path, 'rb'))
     else:
@@ -47,7 +49,7 @@ def main():
     df = pd.DataFrame(data)
 
     # إنشاء زر لتنفيذ التنبؤ
-    if st.button('Predict Potability'):
+       if st.button('Predict Potability'):
         if model is not None:
             prediction = model.predict(df)
             if prediction[0] == 0:
