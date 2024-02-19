@@ -8,7 +8,7 @@ print(f"Directory Contents: {os.listdir()}")
 
 # Update the model path to the correct absolute path
 model_path = "C:/Users/osamh/TuProject/Final Project/mushbari-main/mushbari-main/RandomForestClassifier_model2.sav"
-load_model=pkl.load(open(filepath,"br"))
+load_model=pkl.load(open(model_path,"br"))
 def load_model():
     try:
         if os.path.exists(model_path):
