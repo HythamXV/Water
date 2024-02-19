@@ -7,7 +7,7 @@ print(f"Current Working Directory: {os.getcwd()}")
 print(f"Directory Contents: {os.listdir()}")
 
 # Update the model path to the correct absolute path
-model_path = "mushbari-main/mushbari-main/RandomForestClassifier_model2.sav"
+model_path = "/full/path/to/mushbari-main/mushbari-main/RandomForestClassifier_model2.sav"
 
 def load_model():
     try:
@@ -22,6 +22,7 @@ def load_model():
     except Exception as e:
         print(f"Error loading the model: {e}")
         return None
+
 
 
 def main():
