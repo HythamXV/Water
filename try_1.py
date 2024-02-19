@@ -7,7 +7,7 @@ print(f"Current Working Directory: {os.getcwd()}")
 print(f"Directory Contents: {os.listdir()}")
 
 # Update the model path to the correct absolute path
-model=pickle.load(open(r"\mushbari-main\mushbari-main\RandomForestClassifier_model2.sav" ,'rb'))
+model_path = r"C:\full\path\to\mushbari-main\mushbari-main\RandomForestClassifier_model2.sav"
 
 def load_model():
     try:
@@ -22,8 +22,6 @@ def load_model():
     except Exception as e:
         print(f"Error loading the model: {e}")
         return None
-
-
 
 def main():
     st.title("Water quality prediction Web App")
