@@ -4,17 +4,33 @@ import numpy as np
 import plotly .express as px
 import pickle
 import os
+from model_loader import load_model
 
+# model_loader.py
+import pickle
+
+def load_model():
+    model_path = "RandomForestClassifier_model2.sav"
+    try:
+        with open(model_path, 'rb') as file:
+            model = pickle.load(file)
+        print("Model loaded successfully!")
+        return model
+    except Exception as e:
+        print(f"Error loading the model: {e}")
+        return None
 
 print(f"Current Working Directory: {os.getcwd()}")
 print(f"Directory Contents: {os.listdir()}")
 
 #df=pd.read_csv("water.csv")
 
-st.title ("Water quality prediction Web App")
-st.info('Easy Application For Water quality prediction Desseas')
-model_path = "RandomForestClassifier_model2.sav"
-model = pickle.load(open(model_path, 'rb'))
+def main():
+    st.title("Water quality prediction Web App")
+    st.info('Easy Application For Water quality prediction Diseases')
+
+    # Load the model using the external loader
+    model = load_model()
 
 
 st.sidebar.write ("")
@@ -55,6 +71,9 @@ if st.button('Predict Potability'):
         st.write('The water is not potable.')
     else:
         st.write('The water is potable.')
+
+if __name__ == "__main__":
+    main()
 
 
 
