@@ -57,15 +57,12 @@ def main():
     df = pd.DataFrame(data)
 
     # Create a button to execute the prediction
-    if st.button('Predict Potability'):
-        if model is not None:
-            prediction = model.predict(df)
-            if prediction[0] == 0:
-                st.write('The water is not potable.')
-            else:
-                st.write('The water is potable.')
-        else:
-            st.write('Error: Model not loaded.')
+  if st.button('Predict Potability'):
+    prediction = model.predict(df)
+    if prediction[0] == 0:
+        st.write('The water is not potable.')
+    else:
+        st.write('The water is potable.')
 
 if __name__ == "__main__":
     main()
