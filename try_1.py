@@ -4,7 +4,7 @@ import numpy as np
 import plotly.express as px
 import pickle
 import os
-from model_loader import load_model
+from try_1 import load_model
 
 def main():
     st.title("Water quality prediction Web App")
