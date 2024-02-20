@@ -4,8 +4,18 @@ import numpy as np
 import plotly.express as px
 import pickle
 import os
-from try_1 import load_model
 
+def load_model():
+    model_path = "RandomForestClassifier_model2.sav"
+    try:
+        with open(model_path, 'rb') as file:
+            model = pickle.load(file)
+        print("Model loaded successfully!")
+        return model
+    except Exception as e:
+        print(f"Error loading the model: {e}")
+        return None
+        
 def main():
     st.title("Water quality prediction Web App")
     st.info('Easy Application For Water quality prediction Diseases')
