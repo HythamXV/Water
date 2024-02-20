@@ -5,9 +5,12 @@ import plotly .express as px
 import pickle
 import os
 from model_loader import load_model
+from RandomForestClassifier_model2_loader import load_model
 
+def main():
+    st.title("Water quality prediction Web App")
+    st.info('Easy Application For Water quality prediction Diseases')
 # model_loader.py
-import pickle
 
 def load_model():
     model_path = "RandomForestClassifier_model2.sav"
@@ -24,14 +27,6 @@ print(f"Current Working Directory: {os.getcwd()}")
 print(f"Directory Contents: {os.listdir()}")
 
 #df=pd.read_csv("water.csv")
-
-def main():
-    st.title("Water quality prediction Web App")
-    st.info('Easy Application For Water quality prediction Diseases')
-
-    # Load the model using the external loader
-    model = load_model()
-
 
 st.sidebar.write ("")
 #st.sidebar.markdown ("hhhh")import pickle
