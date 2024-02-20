@@ -3,6 +3,11 @@ import pandas as pd
 import numpy as np
 import plotly .express as px
 import pickle
+import os
+
+
+print(f"Current Working Directory: {os.getcwd()}")
+print(f"Directory Contents: {os.listdir()}")
 
 #df=pd.read_csv("water.csv")
 
